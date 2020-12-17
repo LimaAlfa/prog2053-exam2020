@@ -6,8 +6,23 @@ class EditUser extends LitElement {
       user: { type: Object }
     };
   }
+  render() {
+    return html`
+      <form id="editUser">
+        <label for="usname">Username</label>
+        <input type="text" name="username" id="username">
+        <br>
+        <button @click="${this.changeUser}">Change User</button>    
+      </form>
+    `;
+  }
 
   // din kode her
 
+}
+function changeUser(e){
+  fetch('../api/updateUser.php',{
+    method: 'POST',
+  })
 }
 customElements.define('edit-user', EditUser);
